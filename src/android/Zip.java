@@ -122,10 +122,10 @@ public class Zip extends CordovaPlugin {
                 String compressedName = ze.getName();
 
                 if (ze.isDirectory()) {
-                   File dir = new File(outputDirectory + compressedName);
+                   File dir = new File((outputDirectory + compressedName).replace('\\', '/'));
                    dir.mkdirs();
                 } else {
-                    File file = new File(outputDirectory + compressedName);
+                    File file = new File((outputDirectory + compressedName).replace('\\', '/'));
                     file.getParentFile().mkdirs();
                     if(file.exists() || file.createNewFile()){
                         Log.w("Zip", "extracting: " + file.getPath());
